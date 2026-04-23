@@ -1,6 +1,15 @@
 import streamlit as st
 import shutil
 import os
+
+# --- SQLite Fix for ChromaDB on Streamlit Cloud ---
+import sys
+try:
+    __import__('pysqlite3')
+    sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+except ImportError:
+    pass
+
 from rag_tool import extract_video_id, get_transcript, build_vector_store
 from crew import run_crew
 
