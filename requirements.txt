@@ -1,0 +1,10 @@
+streamlit
+crewai
+langchain
+langchain-google-genai
+langchain-chroma
+langchain-text-splitters
+langchain-core
+chromadb
+youtube-transcript-api
+python-dotenv

@@ -1,6 +1,5 @@
 import os
 import re
-from dotenv import load_dotenv
 from crewai.tools import tool
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_chroma import Chroma
@@ -8,7 +7,17 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from youtube_transcript_api import YouTubeTranscriptApi
 
-load_dotenv()
+# Load API key: use Streamlit secrets on cloud, dotenv locally
+try:
+    import streamlit as st
+    if "GOOGLE_API_KEY" in st.secrets:
+        os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+    else:
+        from dotenv import load_dotenv
+        load_dotenv()
+except Exception:
+    from dotenv import load_dotenv
+    load_dotenv()
 
 CHROMA_DB_DIR = "chroma_db"
 

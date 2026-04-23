@@ -1,9 +1,8 @@
 import os
-from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, Process
 from rag_tool import rag_search_tool
 
-load_dotenv()
+# API key is already loaded into os.environ by rag_tool's secrets loader
 
 LLM = os.environ.get("GOOGLE_LLM_MODEL", "gemini/gemini-2.5-flash")
 
