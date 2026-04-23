@@ -1,0 +1,29 @@
+# Environment variables (SENSITIVE - never commit)
+.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# ChromaDB (local vector store - too large, regenerated on run)
+chroma_db/
+
+# IDE / Editor
+.vscode/
+.idea/
+.qoder/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
