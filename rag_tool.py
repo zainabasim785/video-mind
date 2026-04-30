@@ -56,7 +56,7 @@ def try_fetch_with_proxy(video_id, proxy):
         transcript_list = api_with_proxy.list(video_id)
         transcript = next(iter(transcript_list))
         data = transcript.fetch()
-        return " ".join([entry['text'] for entry in data])
+        return " ".join([entry.text for entry in data])
     except Exception:
         return None
 
@@ -67,7 +67,7 @@ def get_transcript(video_id: str) -> str:
         transcript_list = api.list(video_id)
         transcript = next(iter(transcript_list))
         data = transcript.fetch()
-        return " ".join([entry['text'] for entry in data])
+        return " ".join([entry.text for entry in data])
     except Exception as e:
         error_msg = str(e)
         if "blocking requests from your IP" not in error_msg and "YouTubeRequestFailed" not in str(type(e).__name__):
