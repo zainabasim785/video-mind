@@ -23,39 +23,39 @@ st.set_page_config(
 # --- Custom CSS ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Plus+Jakarta+Sans:wght@200;300;400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        font-weight: 300;
+        font-weight: 400;
     }
 
     .stApp {
-        background-color: #0b0a0a;
-        color: #888686;
+        background-color: #0d0d0f;
+        color: #d1d1d6;
     }
 
     .main-header {
         text-align: center;
-        padding: 5rem 0 3rem 0;
-        border-bottom: 1px solid rgba(212, 204, 194, 0.05);
-        margin-bottom: 3.5rem;
+        padding: 4rem 0 2.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 3rem;
     }
 
     .main-header h1 {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 3.2rem;
+        font-size: 3.8rem;
         font-weight: 400;
-        color: #d4ccc2;
-        letter-spacing: 0.15em;
-        margin-bottom: 0.5rem;
+        color: #ffffff;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.2rem;
     }
 
     .main-header p {
-        color: #5c5a5a;
-        font-size: 0.85rem;
-        font-weight: 300;
-        letter-spacing: 0.25em;
+        color: #98989f;
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 0.15em;
         text-transform: uppercase;
     }
 
@@ -68,75 +68,76 @@ st.markdown("""
 
     /* Answer box as elegant card */
     .answer-box {
-        background-color: transparent;
-        border: none;
-        border-left: 1px solid rgba(212, 204, 194, 0.15);
-        padding: 1.5rem 2.5rem;
-        margin-top: 2rem;
-        color: #a39f99;
-        font-size: 1.1rem;
-        line-height: 2.0;
-        font-weight: 300;
+        background-color: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 1.8rem 2.5rem;
+        margin-top: 1rem;
+        color: #f5f5f7;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        font-weight: 400;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     /* Status indicator */
     .status-pill {
         display: inline-block;
-        background-color: transparent;
-        color: #8c857e;
-        border: 1px solid rgba(212, 204, 194, 0.1);
-        padding: 0.4rem 1.4rem;
-        font-size: 0.7rem;
-        font-weight: 400;
-        letter-spacing: 0.15em;
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 0.4rem 1.2rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
         margin-bottom: 2rem;
     }
 
     /* High-end minimalist inputs */
     .stTextInput > div > div > input {
-        background-color: transparent !important;
-        border: none !important;
-        border-bottom: 1px solid rgba(212, 204, 194, 0.1) !important;
-        border-radius: 0 !important;
-        color: #d4ccc2 !important;
+        background-color: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 8px !important;
+        color: #ffffff !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
-        font-size: 0.95rem !important;
-        font-weight: 300 !important;
-        padding: 0.8rem 0 !important;
-        transition: border-color 0.6s ease !important;
+        font-size: 1rem !important;
+        font-weight: 400 !important;
+        padding: 0.8rem 1.2rem !important;
+        transition: all 0.3s ease !important;
     }
 
     .stTextInput > div > div > input:focus {
-        border-color: rgba(212, 204, 194, 0.4) !important;
+        border-color: rgba(255, 255, 255, 0.5) !important;
+        background-color: rgba(255, 255, 255, 0.05) !important;
         box-shadow: none !important;
     }
 
     /* Minimalist buttons */
     .stButton > button {
-        background-color: transparent !important;
-        color: #a39f99 !important;
-        border: 1px solid rgba(212, 204, 194, 0.1) !important;
-        border-radius: 0 !important;
-        padding: 0.8rem 3rem !important;
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        border: none !important;
+        border-radius: 8px !important;
+        padding: 0.8rem 2.5rem !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
-        font-weight: 300 !important;
-        letter-spacing: 0.15em !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.05em !important;
         text-transform: uppercase !important;
-        font-size: 0.7rem !important;
-        transition: all 0.5s ease !important;
+        font-size: 0.8rem !important;
+        transition: all 0.3s ease !important;
     }
 
     .stButton > button:hover {
-        background-color: rgba(212, 204, 194, 0.03) !important;
-        color: #d4ccc2 !important;
-        border-color: rgba(212, 204, 194, 0.25) !important;
+        background-color: #e0e0e0 !important;
+        transform: translateY(-2px);
     }
 
     /* Sidebar */
     div[data-testid="stSidebarContent"] {
-        background-color: #0b0a0a;
-        border-right: 1px solid rgba(212, 204, 194, 0.05);
+        background-color: #0a0a0c;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .sidebar-section {
@@ -144,18 +145,18 @@ st.markdown("""
         border: none;
         padding: 0;
         margin-bottom: 2.5rem;
-        font-size: 0.8rem;
-        color: #5c5a5a;
-        line-height: 1.8;
-        font-weight: 300;
+        font-size: 0.9rem;
+        color: #a1a1aa;
+        line-height: 1.6;
+        font-weight: 400;
     }
 
     hr {
-        border-color: rgba(212, 204, 194, 0.05) !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
     }
 
     .stSpinner > div {
-        border-top-color: #d4ccc2 !important;
+        border-top-color: #ffffff !important;
     }
 </style>
 """, unsafe_allow_html=True)
