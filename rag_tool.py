@@ -42,7 +42,6 @@ def get_free_proxies():
 def get_transcript(video_id: str) -> str:
     api = YouTubeTranscriptApi()
     
-    # 1. Try directly first (works locally)
     try:
         transcript_list = api.list(video_id)
         transcript = next(iter(transcript_list))
@@ -50,28 +49,18 @@ def get_transcript(video_id: str) -> str:
         return " ".join([entry['text'] for entry in data])
     except Exception as e:
         error_msg = str(e)
-        if "blocking requests from your IP" not in error_msg and "YouTubeRequestFailed" not in str(type(e).__name__):
-            # It's a different error (e.g. no subtitles exist), so raise it
+        if "blocking requests from your IP" in error_msg or "YouTubeRequestFailed" in str(type(e).__name__):
+            raise Exception(
+                "❌ **YouTube IP Blocked** \n\n"
+                "YouTube has permanently blocked Streamlit Cloud's servers from downloading transcripts. "
+                "Because free proxies cause the app to freeze/hang for 10+ minutes, we have disabled them. \n\n"
+                "**To fix this, you must run this app locally on your computer:**\n"
+                "1. Download the code\n"
+                "2. Run `streamlit run app.py`\n"
+                "Your local internet IP is not blocked by YouTube, so it will work perfectly!"
+            )
+        else:
             raise e
-            
-    # 2. If IP is blocked (e.g., on Streamlit Cloud), try using free proxies
-    from youtube_transcript_api.proxies import GenericProxyConfig
-    proxies_list = get_free_proxies()
-    random.shuffle(proxies_list)
-    
-    # Try up to 10 random proxies
-    for proxy in proxies_list[:10]:
-        try:
-            proxy_config = GenericProxyConfig(http_url=proxy, https_url=proxy)
-            api_with_proxy = YouTubeTranscriptApi(proxy_config=proxy_config)
-            transcript_list = api_with_proxy.list(video_id)
-            transcript = next(iter(transcript_list))
-            data = transcript.fetch()
-            return " ".join([entry['text'] for entry in data])
-        except Exception:
-            continue
-            
-    raise Exception("YouTube is actively blocking Streamlit Cloud IPs and all proxy attempts failed. Please try running the app locally on your computer.")
 
 def build_vector_store(transcript_text: str, video_id: str):
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
