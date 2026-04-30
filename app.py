@@ -23,7 +23,7 @@ st.set_page_config(
 # --- Custom CSS ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
@@ -31,30 +31,30 @@ st.markdown("""
     }
 
     .stApp {
-        background-color: #0d0d0f;
-        color: #d1d1d6;
+        background-color: #fcfcfd;
+        color: #334155;
     }
 
     .main-header {
         text-align: center;
         padding: 4rem 0 2.5rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid #e2e8f0;
         margin-bottom: 3rem;
     }
 
     .main-header h1 {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 3.8rem;
-        font-weight: 400;
-        color: #ffffff;
-        letter-spacing: 0.1em;
+        font-size: 3.5rem;
+        font-weight: 500;
+        color: #0f172a;
+        letter-spacing: 0.05em;
         margin-bottom: 0.2rem;
     }
 
     .main-header p {
-        color: #98989f;
-        font-size: 0.95rem;
-        font-weight: 500;
+        color: #64748b;
+        font-size: 0.9rem;
+        font-weight: 600;
         letter-spacing: 0.15em;
         text-transform: uppercase;
     }
@@ -68,28 +68,28 @@ st.markdown("""
 
     /* Answer box as elegant card */
     .answer-box {
-        background-color: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
         border-radius: 12px;
-        padding: 1.8rem 2.5rem;
+        padding: 2rem 2.5rem;
         margin-top: 1rem;
-        color: #f5f5f7;
+        color: #334155;
         font-size: 1.05rem;
-        line-height: 1.7;
+        line-height: 1.8;
         font-weight: 400;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
     }
 
     /* Status indicator */
     .status-pill {
         display: inline-block;
-        background-color: rgba(255, 255, 255, 0.08);
-        color: #ffffff;
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background-color: #f1f5f9;
+        color: #475569;
+        border: 1px solid #cbd5e1;
         border-radius: 20px;
         padding: 0.4rem 1.2rem;
         font-size: 0.75rem;
-        font-weight: 500;
+        font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         margin-bottom: 2rem;
@@ -98,26 +98,26 @@ st.markdown("""
     /* High-end minimalist inputs */
     .stTextInput > div > div > input {
         background-color: #ffffff !important;
-        border: 1px solid rgba(255, 255, 255, 0.8) !important;
+        border: 1px solid #cbd5e1 !important;
         border-radius: 8px !important;
-        color: #000000 !important;
+        color: #0f172a !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-size: 1rem !important;
         font-weight: 500 !important;
         padding: 0.8rem 1.2rem !important;
-        transition: all 0.3s ease !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02) !important;
     }
 
     .stTextInput > div > div > input:focus {
-        border-color: #a0a0a0 !important;
-        background-color: #ffffff !important;
-        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2) !important;
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
     }
 
     /* Minimalist buttons */
     .stButton > button {
-        background-color: #ffffff !important;
-        color: #000000 !important;
+        background-color: #0f172a !important;
+        color: #ffffff !important;
         border: none !important;
         border-radius: 8px !important;
         padding: 0.8rem 2.5rem !important;
@@ -126,18 +126,20 @@ st.markdown("""
         letter-spacing: 0.05em !important;
         text-transform: uppercase !important;
         font-size: 0.8rem !important;
-        transition: all 0.3s ease !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
     }
 
     .stButton > button:hover {
-        background-color: #e0e0e0 !important;
-        transform: translateY(-2px);
+        background-color: #334155 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15) !important;
     }
 
     /* Sidebar */
     div[data-testid="stSidebarContent"] {
-        background-color: #0a0a0c;
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        background-color: #f8fafc;
+        border-right: 1px solid #e2e8f0;
     }
 
     .sidebar-section {
@@ -146,17 +148,17 @@ st.markdown("""
         padding: 0;
         margin-bottom: 2.5rem;
         font-size: 0.9rem;
-        color: #a1a1aa;
+        color: #475569;
         line-height: 1.6;
         font-weight: 400;
     }
 
     hr {
-        border-color: rgba(255, 255, 255, 0.08) !important;
+        border-color: #e2e8f0 !important;
     }
 
     .stSpinner > div {
-        border-top-color: #ffffff !important;
+        border-top-color: #3b82f6 !important;
     }
 </style>
 """, unsafe_allow_html=True)
