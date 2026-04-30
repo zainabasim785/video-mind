@@ -2,6 +2,8 @@ streamlit
 crewai
 langchain-google-genai
 langchain-chroma
+langchain-text-splitters
+langchain-core
 youtube-transcript-api
 pysqlite3-binary
 python-dotenv
