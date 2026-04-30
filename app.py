@@ -23,7 +23,7 @@ st.set_page_config(
 # --- Custom CSS ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
@@ -31,30 +31,30 @@ st.markdown("""
     }
 
     .stApp {
-        background-color: #18181b;
-        color: #a1a1aa;
+        background-color: #0f172a; /* Tailwind slate-900 */
+        color: #cbd5e1; /* Tailwind slate-300 */
     }
 
     .main-header {
         text-align: center;
         padding: 4rem 0 2.5rem 0;
-        border-bottom: 1px solid #27272a;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
         margin-bottom: 3rem;
     }
 
     .main-header h1 {
         font-family: 'Cormorant Garamond', serif;
-        font-size: 3.5rem;
-        font-weight: 500;
-        color: #e4e4e7;
-        letter-spacing: 0.05em;
+        font-size: 3.8rem;
+        font-weight: 400;
+        color: #f8fafc; /* slate-50 */
+        letter-spacing: 0.1em;
         margin-bottom: 0.2rem;
     }
 
     .main-header p {
-        color: #71717a;
-        font-size: 0.9rem;
-        font-weight: 600;
+        color: #94a3b8; /* slate-400 */
+        font-size: 0.95rem;
+        font-weight: 500;
         letter-spacing: 0.15em;
         text-transform: uppercase;
     }
@@ -68,28 +68,29 @@ st.markdown("""
 
     /* Answer box as elegant card */
     .answer-box {
-        background-color: #27272a;
-        border: 1px solid #3f3f46;
-        border-radius: 12px;
-        padding: 2rem 2.5rem;
+        background-color: rgba(30, 41, 59, 0.5); /* slate-800 with transparency */
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        border-left: 4px solid #6366f1; /* Indigo accent */
+        border-radius: 8px;
+        padding: 1.8rem 2.5rem;
         margin-top: 1rem;
-        color: #d4d4d8;
+        color: #f1f5f9; /* slate-100 */
         font-size: 1.05rem;
-        line-height: 1.8;
+        line-height: 1.7;
         font-weight: 400;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     /* Status indicator */
     .status-pill {
         display: inline-block;
-        background-color: #27272a;
-        color: #a1a1aa;
-        border: 1px solid #3f3f46;
+        background-color: rgba(99, 102, 241, 0.1); /* Indigo tint */
+        color: #818cf8; /* Indigo-400 */
+        border: 1px solid rgba(99, 102, 241, 0.2);
         border-radius: 20px;
         padding: 0.4rem 1.2rem;
         font-size: 0.75rem;
-        font-weight: 600;
+        font-weight: 500;
         letter-spacing: 0.1em;
         text-transform: uppercase;
         margin-bottom: 2rem;
@@ -97,27 +98,27 @@ st.markdown("""
 
     /* High-end minimalist inputs */
     .stTextInput > div > div > input {
-        background-color: #27272a !important;
-        border: 1px solid #3f3f46 !important;
+        background-color: rgba(30, 41, 59, 0.8) !important; /* slate-800 */
+        border: 1px solid rgba(148, 163, 184, 0.2) !important;
         border-radius: 8px !important;
-        color: #e4e4e7 !important;
+        color: #f8fafc !important; /* slate-50 */
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-size: 1rem !important;
-        font-weight: 500 !important;
+        font-weight: 400 !important;
         padding: 0.8rem 1.2rem !important;
-        transition: all 0.2s ease !important;
+        transition: all 0.3s ease !important;
     }
 
     .stTextInput > div > div > input:focus {
-        border-color: #52525b !important;
-        background-color: #3f3f46 !important;
-        box-shadow: 0 0 0 3px rgba(82, 82, 91, 0.3) !important;
+        border-color: #6366f1 !important; /* Indigo accent */
+        background-color: rgba(30, 41, 59, 1) !important;
+        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
     }
 
     /* Minimalist buttons */
     .stButton > button {
-        background-color: #3f3f46 !important;
-        color: #e4e4e7 !important;
+        background-color: #6366f1 !important; /* Indigo-500 */
+        color: #ffffff !important;
         border: none !important;
         border-radius: 8px !important;
         padding: 0.8rem 2.5rem !important;
@@ -126,19 +127,20 @@ st.markdown("""
         letter-spacing: 0.05em !important;
         text-transform: uppercase !important;
         font-size: 0.8rem !important;
-        transition: all 0.2s ease !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
     .stButton > button:hover {
-        background-color: #52525b !important;
-        color: #ffffff !important;
-        transform: translateY(-1px);
+        background-color: #4f46e5 !important; /* Indigo-600 */
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
 
     /* Sidebar */
     div[data-testid="stSidebarContent"] {
-        background-color: #18181b;
-        border-right: 1px solid #27272a;
+        background-color: #020617; /* slate-950 */
+        border-right: 1px solid rgba(148, 163, 184, 0.05);
     }
 
     .sidebar-section {
@@ -147,17 +149,17 @@ st.markdown("""
         padding: 0;
         margin-bottom: 2.5rem;
         font-size: 0.9rem;
-        color: #71717a;
+        color: #94a3b8;
         line-height: 1.6;
         font-weight: 400;
     }
 
     hr {
-        border-color: #27272a !important;
+        border-color: rgba(148, 163, 184, 0.1) !important;
     }
 
     .stSpinner > div {
-        border-top-color: #71717a !important;
+        border-top-color: #6366f1 !important;
     }
 </style>
 """, unsafe_allow_html=True)
