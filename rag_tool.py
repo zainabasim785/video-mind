@@ -26,18 +26,39 @@ def extract_video_id(url: str) -> str:
     match = re.search(pattern, url)
     return match.group(1) if match else None
 
+
 import urllib.request
 import random
+import concurrent.futures
+import requests
 
 def get_free_proxies():
     try:
         url = "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=5000&country=all&ssl=all&anonymity=all"
         req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-        response = urllib.request.urlopen(req)
+        response = urllib.request.urlopen(req, timeout=5)
         proxies = response.read().decode('utf-8').strip().split('\r\n')
         return [p for p in proxies if p]
     except Exception:
         return []
+
+class TimeoutSession(requests.Session):
+    def request(self, *args, **kwargs):
+        kwargs.setdefault('timeout', 3)
+        return super().request(*args, **kwargs)
+
+def try_fetch_with_proxy(video_id, proxy):
+    from youtube_transcript_api.proxies import GenericProxyConfig
+    try:
+        proxy_config = GenericProxyConfig(http_url=proxy, https_url=proxy)
+        http_client = TimeoutSession()
+        api_with_proxy = YouTubeTranscriptApi(proxy_config=proxy_config, http_client=http_client)
+        transcript_list = api_with_proxy.list(video_id)
+        transcript = next(iter(transcript_list))
+        data = transcript.fetch()
+        return " ".join([entry['text'] for entry in data])
+    except Exception:
+        return None
 
 def get_transcript(video_id: str) -> str:
     api = YouTubeTranscriptApi()
@@ -49,18 +70,22 @@ def get_transcript(video_id: str) -> str:
         return " ".join([entry['text'] for entry in data])
     except Exception as e:
         error_msg = str(e)
-        if "blocking requests from your IP" in error_msg or "YouTubeRequestFailed" in str(type(e).__name__):
-            raise Exception(
-                "❌ **YouTube IP Blocked** \n\n"
-                "YouTube has permanently blocked Streamlit Cloud's servers from downloading transcripts. "
-                "Because free proxies cause the app to freeze/hang for 10+ minutes, we have disabled them. \n\n"
-                "**To fix this, you must run this app locally on your computer:**\n"
-                "1. Download the code\n"
-                "2. Run `streamlit run app.py`\n"
-                "Your local internet IP is not blocked by YouTube, so it will work perfectly!"
-            )
-        else:
+        if "blocking requests from your IP" not in error_msg and "YouTubeRequestFailed" not in str(type(e).__name__):
             raise e
+            
+    # 2. If IP is blocked, try using fast parallel proxies
+    proxies_list = get_free_proxies()
+    random.shuffle(proxies_list)
+    
+    if proxies_list:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+            futures = {executor.submit(try_fetch_with_proxy, video_id, proxy): proxy for proxy in proxies_list[:20]}
+            for future in concurrent.futures.as_completed(futures):
+                result = future.result()
+                if result is not None:
+                    return result
+
+    raise Exception("YouTube blocked the server IP, and all free proxy attempts failed or timed out. Please try again later or run locally.")
 
 def build_vector_store(transcript_text: str, video_id: str):
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
