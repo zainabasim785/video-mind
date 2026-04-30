@@ -44,7 +44,7 @@ def get_free_proxies():
 
 class TimeoutSession(requests.Session):
     def request(self, *args, **kwargs):
-        kwargs.setdefault('timeout', 3)
+        kwargs.setdefault('timeout', 8)
         return super().request(*args, **kwargs)
 
 def try_fetch_with_proxy(video_id, proxy):
@@ -78,8 +78,8 @@ def get_transcript(video_id: str) -> str:
     random.shuffle(proxies_list)
     
     if proxies_list:
-        with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-            futures = {executor.submit(try_fetch_with_proxy, video_id, proxy): proxy for proxy in proxies_list[:20]}
+        with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+            futures = {executor.submit(try_fetch_with_proxy, video_id, proxy): proxy for proxy in proxies_list[:50]}
             for future in concurrent.futures.as_completed(futures):
                 result = future.result()
                 if result is not None:
