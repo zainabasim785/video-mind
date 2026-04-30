@@ -31,14 +31,14 @@ st.markdown("""
     }
 
     .stApp {
-        background-color: #fcfcfd;
-        color: #334155;
+        background-color: #18181b;
+        color: #a1a1aa;
     }
 
     .main-header {
         text-align: center;
         padding: 4rem 0 2.5rem 0;
-        border-bottom: 1px solid #e2e8f0;
+        border-bottom: 1px solid #27272a;
         margin-bottom: 3rem;
     }
 
@@ -46,13 +46,13 @@ st.markdown("""
         font-family: 'Cormorant Garamond', serif;
         font-size: 3.5rem;
         font-weight: 500;
-        color: #0f172a;
+        color: #e4e4e7;
         letter-spacing: 0.05em;
         margin-bottom: 0.2rem;
     }
 
     .main-header p {
-        color: #64748b;
+        color: #71717a;
         font-size: 0.9rem;
         font-weight: 600;
         letter-spacing: 0.15em;
@@ -68,24 +68,24 @@ st.markdown("""
 
     /* Answer box as elegant card */
     .answer-box {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
+        background-color: #27272a;
+        border: 1px solid #3f3f46;
         border-radius: 12px;
         padding: 2rem 2.5rem;
         margin-top: 1rem;
-        color: #334155;
+        color: #d4d4d8;
         font-size: 1.05rem;
         line-height: 1.8;
         font-weight: 400;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     }
 
     /* Status indicator */
     .status-pill {
         display: inline-block;
-        background-color: #f1f5f9;
-        color: #475569;
-        border: 1px solid #cbd5e1;
+        background-color: #27272a;
+        color: #a1a1aa;
+        border: 1px solid #3f3f46;
         border-radius: 20px;
         padding: 0.4rem 1.2rem;
         font-size: 0.75rem;
@@ -97,27 +97,27 @@ st.markdown("""
 
     /* High-end minimalist inputs */
     .stTextInput > div > div > input {
-        background-color: #ffffff !important;
-        border: 1px solid #cbd5e1 !important;
+        background-color: #27272a !important;
+        border: 1px solid #3f3f46 !important;
         border-radius: 8px !important;
-        color: #0f172a !important;
+        color: #e4e4e7 !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-size: 1rem !important;
         font-weight: 500 !important;
         padding: 0.8rem 1.2rem !important;
         transition: all 0.2s ease !important;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02) !important;
     }
 
     .stTextInput > div > div > input:focus {
-        border-color: #3b82f6 !important;
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+        border-color: #52525b !important;
+        background-color: #3f3f46 !important;
+        box-shadow: 0 0 0 3px rgba(82, 82, 91, 0.3) !important;
     }
 
     /* Minimalist buttons */
     .stButton > button {
-        background-color: #0f172a !important;
-        color: #ffffff !important;
+        background-color: #3f3f46 !important;
+        color: #e4e4e7 !important;
         border: none !important;
         border-radius: 8px !important;
         padding: 0.8rem 2.5rem !important;
@@ -127,19 +127,18 @@ st.markdown("""
         text-transform: uppercase !important;
         font-size: 0.8rem !important;
         transition: all 0.2s ease !important;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
     }
 
     .stButton > button:hover {
-        background-color: #334155 !important;
+        background-color: #52525b !important;
+        color: #ffffff !important;
         transform: translateY(-1px);
-        box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.15) !important;
     }
 
     /* Sidebar */
     div[data-testid="stSidebarContent"] {
-        background-color: #f8fafc;
-        border-right: 1px solid #e2e8f0;
+        background-color: #18181b;
+        border-right: 1px solid #27272a;
     }
 
     .sidebar-section {
@@ -148,17 +147,17 @@ st.markdown("""
         padding: 0;
         margin-bottom: 2.5rem;
         font-size: 0.9rem;
-        color: #475569;
+        color: #71717a;
         line-height: 1.6;
         font-weight: 400;
     }
 
     hr {
-        border-color: #e2e8f0 !important;
+        border-color: #27272a !important;
     }
 
     .stSpinner > div {
-        border-top-color: #3b82f6 !important;
+        border-top-color: #71717a !important;
     }
 </style>
 """, unsafe_allow_html=True)
