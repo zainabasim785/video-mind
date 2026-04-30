@@ -97,21 +97,21 @@ st.markdown("""
 
     /* High-end minimalist inputs */
     .stTextInput > div > div > input {
-        background-color: rgba(255, 255, 255, 0.02) !important;
-        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        background-color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.8) !important;
         border-radius: 8px !important;
-        color: #ffffff !important;
+        color: #000000 !important;
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-size: 1rem !important;
-        font-weight: 400 !important;
+        font-weight: 500 !important;
         padding: 0.8rem 1.2rem !important;
         transition: all 0.3s ease !important;
     }
 
     .stTextInput > div > div > input:focus {
-        border-color: rgba(255, 255, 255, 0.5) !important;
-        background-color: rgba(255, 255, 255, 0.05) !important;
-        box-shadow: none !important;
+        border-color: #a0a0a0 !important;
+        background-color: #ffffff !important;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2) !important;
     }
 
     /* Minimalist buttons */
