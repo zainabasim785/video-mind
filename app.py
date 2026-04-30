@@ -31,14 +31,14 @@ st.markdown("""
     }
 
     .stApp {
-        background-color: #0f172a; /* Tailwind slate-900 */
-        color: #cbd5e1; /* Tailwind slate-300 */
+        background-color: #1c1a19; /* Warm dark espresso */
+        color: #b5aca3; /* Soft beige-grey */
     }
 
     .main-header {
         text-align: center;
         padding: 4rem 0 2.5rem 0;
-        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        border-bottom: 1px solid rgba(230, 222, 195, 0.05);
         margin-bottom: 3rem;
     }
 
@@ -46,13 +46,13 @@ st.markdown("""
         font-family: 'Cormorant Garamond', serif;
         font-size: 3.8rem;
         font-weight: 400;
-        color: #f8fafc; /* slate-50 */
+        color: #e6dec3; /* Light cream/beige */
         letter-spacing: 0.1em;
         margin-bottom: 0.2rem;
     }
 
     .main-header p {
-        color: #94a3b8; /* slate-400 */
+        color: #9c9288; /* Muted beige */
         font-size: 0.95rem;
         font-weight: 500;
         letter-spacing: 0.15em;
@@ -68,13 +68,13 @@ st.markdown("""
 
     /* Answer box as elegant card */
     .answer-box {
-        background-color: rgba(30, 41, 59, 0.5); /* slate-800 with transparency */
-        border: 1px solid rgba(148, 163, 184, 0.1);
-        border-left: 4px solid #6366f1; /* Indigo accent */
+        background-color: #262322; /* Warm dark grey card */
+        border: 1px solid rgba(230, 222, 195, 0.08);
+        border-left: 4px solid #cca47c; /* Chic tan accent */
         border-radius: 8px;
         padding: 1.8rem 2.5rem;
         margin-top: 1rem;
-        color: #f1f5f9; /* slate-100 */
+        color: #e6dec3; /* Light cream */
         font-size: 1.05rem;
         line-height: 1.7;
         font-weight: 400;
@@ -84,9 +84,9 @@ st.markdown("""
     /* Status indicator */
     .status-pill {
         display: inline-block;
-        background-color: rgba(99, 102, 241, 0.1); /* Indigo tint */
-        color: #818cf8; /* Indigo-400 */
-        border: 1px solid rgba(99, 102, 241, 0.2);
+        background-color: rgba(204, 164, 124, 0.08); /* Tan tint */
+        color: #cca47c; /* Tan */
+        border: 1px solid rgba(204, 164, 124, 0.2);
         border-radius: 20px;
         padding: 0.4rem 1.2rem;
         font-size: 0.75rem;
@@ -98,10 +98,10 @@ st.markdown("""
 
     /* High-end minimalist inputs */
     .stTextInput > div > div > input {
-        background-color: rgba(30, 41, 59, 0.8) !important; /* slate-800 */
-        border: 1px solid rgba(148, 163, 184, 0.2) !important;
+        background-color: #262322 !important; 
+        border: 1px solid rgba(230, 222, 195, 0.15) !important;
         border-radius: 8px !important;
-        color: #f8fafc !important; /* slate-50 */
+        color: #e6dec3 !important; /* Light cream */
         font-family: 'Plus Jakarta Sans', sans-serif !important;
         font-size: 1rem !important;
         font-weight: 400 !important;
@@ -110,15 +110,15 @@ st.markdown("""
     }
 
     .stTextInput > div > div > input:focus {
-        border-color: #6366f1 !important; /* Indigo accent */
-        background-color: rgba(30, 41, 59, 1) !important;
-        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+        border-color: #cca47c !important; /* Tan accent */
+        background-color: #2e2a29 !important;
+        box-shadow: 0 0 0 2px rgba(204, 164, 124, 0.15) !important;
     }
 
     /* Minimalist buttons */
     .stButton > button {
-        background-color: #6366f1 !important; /* Indigo-500 */
-        color: #ffffff !important;
+        background-color: #cca47c !important; /* Chic tan */
+        color: #1f1915 !important; /* Dark brown text */
         border: none !important;
         border-radius: 8px !important;
         padding: 0.8rem 2.5rem !important;
@@ -132,15 +132,15 @@ st.markdown("""
     }
 
     .stButton > button:hover {
-        background-color: #4f46e5 !important; /* Indigo-600 */
+        background-color: #e3bc94 !important; /* Lighter tan */
         transform: translateY(-2px);
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
 
     /* Sidebar */
     div[data-testid="stSidebarContent"] {
-        background-color: #020617; /* slate-950 */
-        border-right: 1px solid rgba(148, 163, 184, 0.05);
+        background-color: #161413; /* Deep espresso */
+        border-right: 1px solid rgba(230, 222, 195, 0.05);
     }
 
     .sidebar-section {
@@ -149,17 +149,17 @@ st.markdown("""
         padding: 0;
         margin-bottom: 2.5rem;
         font-size: 0.9rem;
-        color: #94a3b8;
+        color: #9c9288;
         line-height: 1.6;
         font-weight: 400;
     }
 
     hr {
-        border-color: rgba(148, 163, 184, 0.1) !important;
+        border-color: rgba(230, 222, 195, 0.05) !important;
     }
 
     .stSpinner > div {
-        border-top-color: #6366f1 !important;
+        border-top-color: #cca47c !important;
     }
 </style>
 """, unsafe_allow_html=True)
