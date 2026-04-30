@@ -44,7 +44,7 @@ def get_transcript(video_id: str) -> str:
     
     # 1. Try directly first (works locally)
     try:
-        transcript_list = api.list_transcripts(video_id)
+        transcript_list = api.list(video_id)
         transcript = next(iter(transcript_list))
         data = transcript.fetch()
         return " ".join([entry['text'] for entry in data])
@@ -55,14 +55,16 @@ def get_transcript(video_id: str) -> str:
             raise e
             
     # 2. If IP is blocked (e.g., on Streamlit Cloud), try using free proxies
+    from youtube_transcript_api.proxies import GenericProxyConfig
     proxies_list = get_free_proxies()
     random.shuffle(proxies_list)
     
     # Try up to 10 random proxies
     for proxy in proxies_list[:10]:
         try:
-            proxy_dict = {"http": proxy, "https": proxy}
-            transcript_list = api.list_transcripts(video_id, proxies=proxy_dict)
+            proxy_config = GenericProxyConfig(http_url=proxy, https_url=proxy)
+            api_with_proxy = YouTubeTranscriptApi(proxy_config=proxy_config)
+            transcript_list = api_with_proxy.list(video_id)
             transcript = next(iter(transcript_list))
             data = transcript.fetch()
             return " ".join([entry['text'] for entry in data])
